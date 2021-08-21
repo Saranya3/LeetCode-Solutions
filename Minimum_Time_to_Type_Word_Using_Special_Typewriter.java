@@ -1,4 +1,6 @@
-  int cnt = 0;
+class Solution {
+    public int minTimeToType(String word) {
+        int cnt = 0;
         char prev = 'a';
         for (int i = 0; i < word.length(); ++i) {
             char cur = word.charAt(i);
@@ -7,3 +9,5 @@
             prev = cur;
         }
         return cnt;
+    }
+}
