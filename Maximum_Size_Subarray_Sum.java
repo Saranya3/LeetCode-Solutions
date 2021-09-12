@@ -19,7 +19,7 @@
 // Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 // Output: 0
 
-//O(N)
+//O(N^2)
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         int min=Integer.MAX_VALUE;
@@ -48,4 +48,21 @@ class Solution {
     }
 }
 
+//O(N)
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int n=nums.length,ans=Integer.MAX_VALUE;
+        
+        int left=0,sum=0;
+        
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            while (sum >= target) {
+                ans = Math.min(ans, i + 1 - left);
+                sum -= nums[left++];
+            }
+        }
+        return (ans != Integer.MAX_VALUE) ? ans : 0;
+    }
+}
 
