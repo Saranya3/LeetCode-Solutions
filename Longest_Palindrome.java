@@ -37,3 +37,31 @@ class Solution {
         return ans;
     }
 }
+
+//2
+class Solution {
+    public int longestPalindrome(String s) {
+        HashMap<Character,Integer> map=new HashMap<>();
+        int len=0,isOdd=0;
+        
+        for(int i=0;i<s.length();i++){
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        }
+        
+        for(char key:map.keySet()){
+            if(map.get(key)%2==0){
+                len+=map.get(key);
+            }
+            else{
+                if(isOdd==0){
+                    len+=map.get(key);
+                    isOdd=1;
+                }
+                else{
+                    len+=map.get(key)/2 * 2;
+                }
+            }
+        }
+        return len;
+    }
+}
